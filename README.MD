@@ -106,7 +106,7 @@ Create and use the ```http://localhost:8080/auth/reset_password``` route with th
 "password": "789654"
 }
 ```
-	<h1 align="center"> Accessing Protected Routes </h1>
+<h1 align="center"> Accessing Protected Routes </h1>
 
 To access protected routes it is necessary to copy the user's authentication token and paste it in the **Header** of each request. New ```Authorization``` header and new ```Bearer user_access_token``` value.
 
