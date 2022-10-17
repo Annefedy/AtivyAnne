@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react';
+import Inicio from './pages/client/painel';
 
 function App() {
     return(
        <div className="App">
-        <header>
-            <h1>Anne</h1>
-        </header>
+        <Inicio />
         </div>
     )
 }
