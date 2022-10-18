@@ -4,9 +4,7 @@
   "description": "um sistema TO DO feito com React no front-end e Node.js no back-end e banco de dados MySQL.",
   "main": "index.js",
   "scripts": {
-    "front-end": "npm start --prefix front-end",
-    "index": "nodemon index.js",
-    "dev": "concurrently \"npm run index\" \" npm run front-end\"",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anne Carine",
@@ -21,7 +19,6 @@
     "nodemailer": "^6.8.0"
   },
   "devDependencies": {
-    "concurrently": "^7.4.0",
     "consign": "^0.1.6",
     "nodemon": "^2.0.20"
   }

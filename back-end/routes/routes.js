@@ -1,8 +1,15 @@
 module.exports = app => {
+    app.post('/create', app.app.controllers.user.create)
     app.post('/register', app.app.controllers.user.register)
     app.post('/auth', app.app.controllers.user.auth)
     app.post('/auth/forgot_password', app.app.controllers.user.forgotPassword)
     app.post('/auth/reset_password', app.app.controllers.user.resetPassword)
+
+    app.post('/tasks', app.app.controllers.task.create);
+    app.get('/tasks',  app.app.controllers.task.index);
+    app.get('/tasks.detalhes/:_id', app.app.controllers.task.detalhes)
+    app.delete('/tasks/:_id',  app.app.controllers.task.deletar)
+    app.put('/tasks',  app.app.controllers.task.update)
   
     app.route('/user')
       .all(app.app.middlewares.authToken.authenticationJWT)

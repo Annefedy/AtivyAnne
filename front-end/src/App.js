@@ -1,12 +1,13 @@
-import React from 'react';
-import Inicio from './pages/client/painel';
+import React, {Component} from 'react';
+import Routing from './routes';
 
-function App() {
+class App extends Component {
+  render(){
     return(
-       <div className="App">
-        <Inicio />
-        </div>
-    )
+      //<div className="App">
+        <Routing />
+      //</div>
+    );
+  }
 }
-
 export default App;

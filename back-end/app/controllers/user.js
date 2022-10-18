@@ -14,6 +14,20 @@ module.exports = app => {
       expiresIn: 86400
     })
   }
+  //create
+  const create = async (req,res) =>{
+    const {nome, email, birthDate, address, type,password} = req.body;
+    let data = {};
+    let user = await User.findOne({email});
+    if(!user){
+        data = {nome, email, birthDate, address, type,password};
+        user = await User.create(data);
+                          
+        return res.status(200).json(user);
+    }else{
+        return res.status(500).json(user);
+    }
+   }
 
   // register
   const register = async (req, res) => {
@@ -89,7 +103,7 @@ module.exports = app => {
       })
 
       mailer.sendMail({
-        from: 'rodrigoengj@gmail.com',
+        from: 'annecarine1997@gmail.com',
         to: email,
         subject: 'Link para Resetar sua Senha ✔',
         text: `Utilize o token ${ token } para resetar sua senha`,
@@ -135,6 +149,6 @@ module.exports = app => {
     }
   }
 
-  return { register, auth, userProfile, forgotPassword, resetPassword }
+  return { create,register, auth, userProfile, forgotPassword, resetPassword }
 }
   

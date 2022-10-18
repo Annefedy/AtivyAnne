@@ -6,29 +6,33 @@ module.exports = () => {
   const UserSchema = new Schema({
     name: {
       type: String,
-      required: true
+     
     },
     email: {
       type: String,
-      unique: true,
-      required: true,
-      lowercase: true
-    },
+        unique:true,
+        required: 'Please enter your email',
+        trim: true,
+        lowercase:true
+     },
+    birthDate: {
+      type: String,
+      unique: true
+  },
+  address: {
+    street: String,
+    district: String,
+    city: String,
+    state: String
+},
+  type: {
+      type:Number,
+      default:1
+     },
     password: {
       type: String,
       required: true,
-      minLength: 7,
       select: false
-    },
-    birthDate: {
-        type: String,
-        unique: true
-    },
-    address: {
-        street: String,
-        district: String,
-        city: String,
-        state: String
     },
     passwordResetToken: {
       type: String,

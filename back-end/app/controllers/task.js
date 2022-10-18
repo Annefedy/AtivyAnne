@@ -1,37 +1,48 @@
-const Tarefa = require('../models/Task')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+module.exports = app  => {
+    const { Task } = app.app.models.Task
 
-module.exports = {   
-    async index(req,res){
-        const task = await Tarefa.find();
+
+  const index = async (req,res) => {
+        const task = await Task.find();
     res.json(task);
-},
-async create(req,res){
+}
+const create = async (req,res) => {
     const { title, project, assignedTo, completed } = req.body;
     let data = {};
-    let task = await Tarefa.findOne({ title });
+    let task = await Task.findOne({ title });
     if(!task){
         data = { title, project, assignedTo, completed  };
-        task = await Tarefa.create(data);
+        task = await Task.create(data);
                           
         return res.status(200).json(task);
     }else{
         return res.status(500).json(task);
     }
-   },
-   async detalhes(req,res){
+   }
+  const detalhes = async (req,res) =>{
     const {_id} = req.params;
-    const task = await Tarefa.findOne({_id});
-    res.json(task);
-   },
-   async deletar(req,res){
-    const {_id} = req.params;
-    const task = await Tarefa.findByIdAndDelete({_id});
-   return res.json(task);
-   },
-   async update(req,res){
-    const {_id, title, project, assignedTo, completed } = req.body;
-    const data = {};
-    const task = await Tarefa.findOneAndUpdate({_id},data,{new:true});
+    const task = await Task.findOne({_id});
     res.json(task);
    }
-}
+   const deletar = async (req,res) =>{
+    const {_id} = req.params;
+    const task = await Task.findByIdAndDelete({_id});
+   return res.json(task);
+   }
+   const update = async (req,res) => {
+    const {_id, title, project, assignedTo, completed } = req.body;
+    const data = {};
+    const task = await Task.findOneAndUpdate({_id},data,{new:true});
+    res.json(task);
+   }
+   return {index, create,  detalhes, deletar, update}
+ }  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+
+
+ 
+
+  
+
+

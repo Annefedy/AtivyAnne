@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
@@ -15,33 +15,17 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import api from '../../../services/api';
-import {useParams} from 'react-router-dom';
+import api from '../../../services/api'
 const mdTheme = createTheme();
 
 
-function CreateUsers() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [birthDate, setBirthDate] = useState('');
-    const [address, setAddress] = useState('');
-    const [type, setType] = useState('');
-    const [password, setPassword] = useState('');
-
-  const { idUser } = useParams();
-  useEffect(() => {
-    async function getUser(){
-      var response = await api.get(`/user${idUser}`);
-      console.log(response);
-      setName(response.data.name);
-      setEmail(response.data.email);
-      setBirthDate(response.data.birthDate);
-      setAddress(response.data.address);
-      setType(response.data.type);
-      setPassword(response.data.password);
-    }
-    getUser();
-  }, [idUser]);
+ function CreateUsers() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [address, setAddress] = useState('');
+  const [type, setType] = useState('');
+  const [password, setPassword] = useState('');
 
   async  function handleSubmit(){
     const data = {name,
@@ -52,11 +36,10 @@ function CreateUsers() {
                 password}
     if (name !== '' && email !== '' && birthDate !== '' && address !== '' && type !== '' && password!== ''){
       const response = await api.post('/create', data)
-      console.log(data);
       if (response.status === 200) {
         window.location.href = '/admin/users'
       }else{
-        alert('Erro ao atualizar o usuário')
+        alert('Erro ao cadastrar o usuário')
       }
     }else{
       alert('Necessário preencher todos os dados!')
@@ -90,7 +73,7 @@ function CreateUsers() {
                       <Grid item sm={12}>
                           <h2>Cadastrar Usuário</h2>
                       </Grid>
-                      <Grid item xs={12} sm={12}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           required
                           id="name"
@@ -142,7 +125,7 @@ function CreateUsers() {
                           onChange={ e=> setAddress(e.target.value)}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={3}>
+                      <Grid item xs={12} sm={6}>
                         <FormControl variant="standard" sx={{ m: 0, minWidth: 120, width:"100%" }}>
                           <InputLabel id="Labeltype">Tipo</InputLabel>
                           <Select
@@ -159,7 +142,7 @@ function CreateUsers() {
                           </Select>
                         </FormControl>
                       </Grid>
-                      <Grid item xs={12} sm={3}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           required
                           type="password"
@@ -189,5 +172,5 @@ function CreateUsers() {
 }
 
 export default function Dashboard() {
-  return < CreateUsers />;
+  return <CreateUsers />;
 }

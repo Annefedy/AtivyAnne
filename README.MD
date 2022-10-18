@@ -3,10 +3,8 @@
 <img src="https://user-images.githubusercontent.com/103973102/196051172-70bd605d-e533-4bb5-9559-adbce7a23a5a.jpg" width="800px" height="300px"/>
 </div>
 
-<h1 align="center"> Rest JWT Authentication API with CRUD system built on Node.js, Express and MongoDB Compass.</h1>
-Rest Node.js and Express api with user authentication using JWT (Json Web Token), Nodemailer for password recovery, MongoD Compass for cloud data storage services and a CRUD system for registering, reading, updating and deleting projects and your tasks.
-
-
+<h1 align="center"> Rest JWT Authentication API with CRUD system built in Node.js, Express and MongoDB Compass and Front End with React.js</h1>
+Rest Node.js and Express api with user authentication using JWT (Json Web Token), Nodemailer for password recovery, MongoDB Compass for data storage services and a CRUD system for creating, recording, reading, updating and deleting projects and their tasks.
 <h1 align="center"> Initial Settings </h1>
 configure the **mail.json** file structure with your email provider's **SMTP** credentials. The file is located in the **config** folder. In the project, the [Mailtrap] tool was used to test the sending of email.
 
@@ -56,19 +54,27 @@ Install all dependencies indicated by package.json run the following command:
 npm install 
 ```
 
-Run the project
+Run the project Back-End
 ```
+cd back-end 
 npm run dev 
 ```
+Run the project Front-End
+```
+cd front-end 
+npm start
+```
+
 <h1 align="center"> Testing API </h1>
 I used [Insomnia](https://insomnia.rest/) to test the API, but you can use any of your own.
 ```
 {
 	"name": "Ana",
 	"email": "Ana@gmail.com",
-	"password": "123456",
   "birthDate": "15/07/97",
   "address": "Av Brasil"
+  "type": "1",
+  "password": "123456"
 }
 ```
 
