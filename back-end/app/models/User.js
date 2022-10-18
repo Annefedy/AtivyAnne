@@ -16,8 +16,9 @@ module.exports = () => {
         lowercase:true
      },
     birthDate: {
-      type: String,
-      unique: true
+      type: Date,
+      required: true,
+      trim: true
   },
   address: {
     street: String,

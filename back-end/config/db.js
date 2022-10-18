@@ -2,7 +2,10 @@ const mongoose = require('mongoose')
 const { mongodb_url } = require('../.env')
 
 //conexão com o mongodb
-mongoose.connect('mongodb://localhost:27017/ativy', {
+mongoose.connect(mongodb_url, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true
 }).then(() => {
     console.log('successful database connection')
 }).catch((err) => {
