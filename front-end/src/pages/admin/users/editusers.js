@@ -31,7 +31,7 @@ function CreateUsers() {
   const { idUser } = useParams();
   useEffect(() => {
     async function getUser(){
-      var response = await api.get(`/user${idUser}`);
+      var response = await api.get(`/details`+idUser);
       console.log(response);
       setName(response.data.name);
       setEmail(response.data.email);
@@ -88,7 +88,7 @@ function CreateUsers() {
                   <Paper  >
                     <Grid container spacing={1}  padding={3}>
                       <Grid item sm={12}>
-                          <h2>Cadastrar Usuário</h2>
+                          <h2>Editar Usuário</h2>
                       </Grid>
                       <Grid item xs={12} sm={12}>
                         <TextField

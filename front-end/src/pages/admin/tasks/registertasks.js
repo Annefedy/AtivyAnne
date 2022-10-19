@@ -17,17 +17,16 @@ const mdTheme = createTheme();
 
  function RegisterTasks() {
   const [title, setTitle] = useState('');
-  const [project, setProject] = useState('');
-  const [assignedTo, setAssignedTo] = useState('');
-  const [completed, setCompleted] = useState('');
+  const [name_project, setName_Project] = useState('');
+  const [description, setDescription] = useState('');
+  
  
 
   async  function handleSubmit(){
-    const data = {title,
-                  project,
-                  assignedTo,
-                completed}
-    if (title !== '' && project !== '' && assignedTo!== ''  && completed!== ''){
+    const data = {title, 
+      name_project, 
+      description }
+    if (title !== '' && name_project !== '' && description!== ''){
       const response = await api.post('/tasks', data)
       if (response.status === 200) {
         window.location.href = '/admin/tasks/register'
@@ -82,40 +81,27 @@ const mdTheme = createTheme();
                       <Grid item xs={12} sm={6}>
                         <TextField
                           required
-                          id="project"
-                          name="project"
-                          label="Projeto"
+                          id="name_project"
+                          name="name_project"
+                          label="Nome do Projeto"
                           fullWidth
-                          autoComplete="project"
+                          autoComplete="name_project"
                           variant="standard"
-                          value= {project}
-                          onChange={ e=> setProject(e.target.value)}
+                          value= {name_project}
+                          onChange={ e=> setName_Project(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           required
-                          id="assignedTo"
-                          name="assignedTo"
-                          label="Atribuído para"
+                          id="description"
+                          name="description"
+                          label="Descrição do projeto"
                           fullWidth
-                          autoComplete="assignedTo"
+                          autoComplete="description"
                           variant="standard"
-                          value= {assignedTo}
-                          onChange={ e=> setAssignedTo(e.target.value)}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          required
-                          id="completed"
-                          name="completed"
-                          label="completar para"
-                          fullWidth
-                          autoComplete="completed"
-                          variant="standard"
-                          value= {completed}
-                          onChange={ e=>  setCompleted(e.target.value)}
+                          value= {description}
+                          onChange={ e=> setDescription(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={12}>

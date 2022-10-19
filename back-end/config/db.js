@@ -3,9 +3,8 @@ const { mongodb_url } = require('../.env')
 
 //conexão com o mongodb
 mongoose.connect(mongodb_url, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true
+    useNewUrlParser: true , 
+        useUnifiedTopology: true
 }).then(() => {
     console.log('successful database connection')
 }).catch((err) => {

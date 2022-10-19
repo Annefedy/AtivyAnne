@@ -15,17 +15,18 @@ import api from '../../../services/api'
 const mdTheme = createTheme();
 
 
- function RegisterProjects() {
+  
+ function RegisterTasks() {
   const [title, setTitle] = useState('');
+  const [name_project, setName_Project] = useState('');
   const [description, setDescription] = useState('');
-  const [tasks, setTasks] = useState('');
  
 
   async  function handleSubmit(){
-    const data = {title,
-                  description,
-                  tasks}
-    if (title !== '' && description !== '' && tasks!== ''){
+    const data = {title, 
+      name_project, 
+      description}
+      if (title !== '' && name_project !== '' && description!== ''){
       const response = await api.post('/projects', data)
       if (response.status === 200) {
         window.location.href = '/admin/projects/register'
@@ -42,7 +43,7 @@ const mdTheme = createTheme();
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
         
-        <MenuAdmin title={"Users"} />
+        <MenuAdmin title={"Tasks"} />
         <Box
           component="main"
           sx={{
@@ -62,9 +63,9 @@ const mdTheme = createTheme();
                   <Paper  >
                     <Grid container spacing={1}  padding={3}>
                       <Grid item sm={12}>
-                          <h2>Cadastrar Projetos</h2>
+                          <h2>Cadastrar Tarefas</h2>
                       </Grid>
-                      <Grid item xs={12} sm={12}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           required
                           id="title"
@@ -80,27 +81,27 @@ const mdTheme = createTheme();
                       <Grid item xs={12} sm={6}>
                         <TextField
                           required
-                          id="description"
-                          name="description"
-                          label="Descrição"
+                          id="name_project"
+                          name="name_project"
+                          label="Nome do Projeto"
                           fullWidth
-                          autoComplete="description"
+                          autoComplete="name_project"
                           variant="standard"
-                          value= {description}
-                          onChange={ e=> setDescription(e.target.value)}
+                          value= {name_project}
+                          onChange={ e=> setName_Project(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <TextField
                           required
-                          id="tasks"
-                          name="tasks"
-                          label="Tarefas"
+                          id="description"
+                          name="description"
+                          label="Descrição do projeto"
                           fullWidth
-                          autoComplete="tasks"
+                          autoComplete="description"
                           variant="standard"
-                          value= {tasks}
-                          onChange={ e=> setTasks(e.target.value)}
+                          value= {description}
+                          onChange={ e=> setDescription(e.target.value)}
                         />
                       </Grid>
                       <Grid item xs={12} sm={12}>
@@ -119,5 +120,5 @@ const mdTheme = createTheme();
 }
 
 export default function Dashboard() {
-  return <RegisterProjects />;
+  return <RegisterTasks />;
 }

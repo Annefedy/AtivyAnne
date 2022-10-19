@@ -16,11 +16,11 @@ module.exports = app => {
   }
   //create
   const create = async (req,res) =>{
-    const {nome, email, birthDate, address, type,password} = req.body;
+    const {name, email, birthDate, address, type,password} = req.body;
     let data = {};
     let user = await User.findOne({email});
     if(!user){
-        data = {nome, email, birthDate, address, type,password};
+        data = {name, email, birthDate, address, type,password};
         user = await User.create(data);
                           
         return res.status(200).json(user);
@@ -28,6 +28,26 @@ module.exports = app => {
         return res.status(500).json(user);
     }
    }
+
+   //Deletar 
+   const deletar = async (req,res) =>{
+    const {_id} = req.params;
+    const user = await User.findByIdAndDelete({_id});
+   return res.json(user);
+   }
+
+   // Listar todos
+ const index =  async (req,res) =>{
+    const user = await User.find();
+res.json(user);
+}
+
+//listar por id
+const details = async (req,res) => {
+  const {_id} = req.params;
+  const user = await User.findOne({_id});
+  res.json(user);
+ }
 
   // register
   const register = async (req, res) => {
@@ -149,6 +169,6 @@ module.exports = app => {
     }
   }
 
-  return { create,register, auth, userProfile, forgotPassword, resetPassword }
+  return { create,deletar,index, details, register, auth, userProfile, forgotPassword, resetPassword }
 }
   

@@ -1,5 +1,8 @@
 module.exports = app => {
     app.post('/create', app.app.controllers.user.create)
+    app.get('/details/:_id', app.app.controllers.user.details)
+    app.get('/index',  app.app.controllers.user.index);
+    app.delete('/deletar:_id', app.app.controllers.user.deletar)
     app.post('/register', app.app.controllers.user.register)
     app.post('/auth', app.app.controllers.user.auth)
     app.post('/auth/forgot_password', app.app.controllers.user.forgotPassword)

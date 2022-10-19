@@ -29,16 +29,16 @@ function ListUsers() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    async function loadUsuarios(){
-      const response = await api.get("/user");
+    async function loadUsers(){
+      const response = await api.get("/index");
       setUsers(response.data);
     }
-    loadUsuarios();
+    loadUsers();
   },[]);
 
   async function handleDelete(id){
     if (window.confirm('Excluir Este Usuário?')){
-      var result = await api.delete('/user'+id);
+      var result = await api.delete('/deletar'+id);
       if (result.status === 200){
         window.location.href = '/admin/users';
       }else{
@@ -96,11 +96,13 @@ function ListUsers() {
                                     {row.name}
                                   </TableCell>
                                   <TableCell align="left">{row.email}</TableCell>
+                                  <TableCell align="left">{row.birthDate}</TableCell>
+                                  <TableCell align="left">{row.address}</TableCell>
                                   <TableCell align="center">{row.type===1?<Chip label="Admin" color="primary" />:<Chip label="User" color="secondary" />}</TableCell>
                                   <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                                   <TableCell align="center">
                                     <ButtonGroup aria-label="outlined small button group">
-                                      <Button color="primary" href={"/admin/usuarios/editar/"+row._id}>Atualizar</Button>
+                                      <Button color="primary" href={"/admin/users/edit/"+row._id}>Atualizar</Button>
                                       <Button color="secondary" onClick={()=> handleDelete(row._id)}>Excluir</Button>
                                     </ButtonGroup>
                               

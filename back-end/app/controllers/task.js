@@ -7,11 +7,11 @@ module.exports = app  => {
     res.json(task);
 }
 const create = async (req,res) => {
-    const { title, project, assignedTo, completed } = req.body;
+    const { title, name_project, description } = req.body;
     let data = {};
     let task = await Task.findOne({ title });
     if(!task){
-        data = { title, project, assignedTo, completed  };
+        data = { title, name_project, description };
         task = await Task.create(data);
                           
         return res.status(200).json(task);
@@ -30,7 +30,7 @@ const create = async (req,res) => {
    return res.json(task);
    }
    const update = async (req,res) => {
-    const {_id, title, project, assignedTo, completed } = req.body;
+    const {_id, title, name_project, description } = req.body;
     const data = {};
     const task = await Task.findOneAndUpdate({_id},data,{new:true});
     res.json(task);

@@ -35,17 +35,18 @@ const mdTheme = createTheme();
                   type,
                 password}
     if (name !== '' && email !== '' && birthDate !== '' && address !== '' && type !== '' && password!== ''){
-      const response = await api.post('/create', data)
-      if (response.status === 200) {
-        window.location.href = '/admin/users'
-      }else{
-        alert('Erro ao cadastrar o usuário')
-      }
+     
+
+
+     try {
+      await api.post('/create', data)
+      window.location.href = '/admin/users'
+     } catch (error) {
+      alert('Erro ao cadastrar o usuário')
+     }
     }else{
       alert('Necessário preencher todos os dados!')
     }
-    
-
   }
   return (
     <ThemeProvider theme={mdTheme}>
@@ -77,7 +78,7 @@ const mdTheme = createTheme();
                         <TextField
                           required
                           id="name"
-                          name="nome"
+                          name="name"
                           label="Nome"
                           fullWidth
                           autoComplete="name"
@@ -108,6 +109,7 @@ const mdTheme = createTheme();
                           fullWidth
                           autoComplete="birthDate"
                           variant="standard"
+                          type ="date"
                           value= {birthDate}
                           onChange={ e=> setBirthDate(e.target.value)}
                         />

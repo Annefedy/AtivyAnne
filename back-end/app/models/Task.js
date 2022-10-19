@@ -7,22 +7,15 @@ module.exports = () => {
       type: String,
       required: true
     },
-    project: {
-      type: Schema.Types.ObjectId,
-      ref: 'Project',
+    name_project: {
+      type: String,
       required: true
     },
-    assignedTo: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
+    description: {
+      type: String,
       required: true
     },
-    completed: {
-      type: Boolean,
-      required: true,
-      default: false
-    },
-    createdAt: {
+     createdAt: {
       type: Date,
       default: Date.now
     }

@@ -77,8 +77,8 @@ function ListProjects() {
                             <TableHead>
                               <TableRow>
                                 <TableCell align="center">Título</TableCell>
+                                <TableCell align="center">Nome do projeto</TableCell>
                                 <TableCell align="center">Descrição</TableCell>
-                                <TableCell align="center">Tarefas</TableCell>
                                 <TableCell align="center">Data create</TableCell>
                                 <TableCell align="center">Option</TableCell>
                               </TableRow>
@@ -92,6 +92,7 @@ function ListProjects() {
                                   <TableCell component="th" scope="row">
                                     {row.title}
                                   </TableCell>
+                                  <TableCell align="left">{row.name_project}</TableCell>
                                   <TableCell align="left">{row.description}</TableCell>
                                   <TableCell align="center">{new Date(row.createdAt).toLocaleString('pt-br')}</TableCell>
                                   <TableCell align="center">

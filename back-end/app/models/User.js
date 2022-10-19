@@ -5,9 +5,8 @@ const bcrypt = require('bcrypt')
 module.exports = () => {
   const UserSchema = new Schema({
     name: {
-      type: String,
-     
-    },
+      type: String
+     },
     email: {
       type: String,
         unique:true,
@@ -21,10 +20,7 @@ module.exports = () => {
       trim: true
   },
   address: {
-    street: String,
-    district: String,
-    city: String,
-    state: String
+   type: String
 },
   type: {
       type:Number,
